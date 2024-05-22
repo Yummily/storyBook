@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="context1" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+  	<commentGenerator> 
+  		<property name="suppressDate" value="true"/>
+  		<property name="addRemarkComments" value="true"/>
+  	</commentGenerator>
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/story_book" driverClass="com.mysql.jdbc.Driver" password="zxfgdjd3133" userId="root">
+    	<property name="nullCatalogMeansCurrent" value="true" />
+    </jdbcConnection>
+    
+    <javaModelGenerator targetPackage="pojo" targetProject="storyBook\src\main\java" />
+    
+    <sqlMapGenerator targetPackage="mapper" targetProject="storyBook\src\main\resources"></sqlMapGenerator>
+    
+    <javaClientGenerator targetPackage="mapper" targetProject="storyBook\src\main\java" type="XMLMAPPER" />
+    
+    <table tableName="%">
+      	<generatedKey column="id" sqlStatement="MySql"/>
+    </table>
+  </context>
+</generatorConfiguration> 
