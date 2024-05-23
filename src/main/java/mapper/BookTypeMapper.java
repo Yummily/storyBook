@@ -1,8 +1,6 @@
 package mapper;
 
 import java.util.List;
-
-import pojo.Book;
 import pojo.BookType;
 
 public interface BookTypeMapper {

@@ -4,8 +4,10 @@ import java.util.List;
 
 import mapper.BookMapper;
 import mapper.BookTypeMapper;
+import mapper.ChapterMapper;
 import pojo.Book;
 import pojo.BookType;
+import pojo.Chapter;
 import pojo.Type;
 import service.bookService;
 import util.baseSqlSession;
@@ -13,6 +15,7 @@ import util.baseSqlSession;
 public class bookServiceImpl implements bookService{
 	BookMapper bookMapper = baseSqlSession.getSqlSession().getMapper(BookMapper.class);
 	BookTypeMapper bookTypeMapper = baseSqlSession.getSqlSession().getMapper(BookTypeMapper.class);
+	ChapterMapper chapterMapper = baseSqlSession.getSqlSession().getMapper(ChapterMapper.class);
 	@Override
 	public List<Book> selectAllBook() {
 		
@@ -59,6 +62,16 @@ public class bookServiceImpl implements bookService{
 		// TODO Auto-generated method stub
 		
 		return bookMapper.selectBookAndChapter(bookId);
+	}
+	@Override
+	public int writeBook(Chapter chapter) {
+		// TODO Auto-generated method stub
+		return chapterMapper.insert(chapter);
+	}
+	@Override
+	public int deleteChapter(int chapterId) {
+		// TODO Auto-generated method stub
+		return chapterMapper.deleteByPrimaryKey(chapterId);
 	}
 
 }

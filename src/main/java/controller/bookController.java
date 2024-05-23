@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pojo.Book;
+import pojo.Chapter;
 import service.impl.bookServiceImpl;
 import util.baseSqlSession;
 
@@ -63,6 +64,25 @@ public class bookController {
 		Book book = bookServiceImpl.readBook(bookId);
 		baseSqlSession.closeSqlSession();
 		return book;
+	}
+	
+	@PostMapping("/writeBook")
+	public int readBook(@RequestBody Chapter chapter) {
+		System.out.println(chapter.getChapterContent());
+		bookServiceImpl = new bookServiceImpl();
+		int i = bookServiceImpl.writeBook(chapter);
+		baseSqlSession.commitSqlsession();
+		baseSqlSession.closeSqlSession();
+		return i;
+	}
+	
+	@GetMapping("/deleteChapter")
+	public int deleteChapter(int chapterId) {
+		bookServiceImpl = new bookServiceImpl(); 
+		int i = bookServiceImpl.deleteChapter(chapterId);
+		baseSqlSession.commitSqlsession();
+		baseSqlSession.closeSqlSession();
+		return i;
 	}
 	
 	
